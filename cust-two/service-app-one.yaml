@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: deployment-app-one
+  name: app-one-svc
+  namespace: cust-two
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: deployment-app-one
+  type: LoadBalancer
+status:
+  loadBalancer: {}

@@ -1,0 +1,19 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-rules-app-one
+  namespace: cust-two
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: top-scorer.org
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: app-one-svc
+                port:
+                  number: 80 

@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: cust-two
+  labels:
+    stage: prod
+    application: k8s-klc

@@ -1,0 +1,16 @@
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: deployment-app-one
+  namespace: cust-two
+spec:
+  maxReplicas: 5
+  minReplicas: 3
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: deployment-app-one
+  targetCPUUtilizationPercentage: 75
+status:
+  currentReplicas: 0
+  desiredReplicas: 0

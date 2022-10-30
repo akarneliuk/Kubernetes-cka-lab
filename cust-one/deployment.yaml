@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: deployment-app-one
+  name: deployment-app-one
+  namespace: cust-one
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: deployment-app-one
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: deployment-app-one
+    spec:
+      containers:
+      - image: nginx:1.22.1
+        name: nginx
+        resources:
+          requests:
+            cpu: 0.125
+            memory: 128Mi
+          limits:
+            cpu: 0.25
+            memory: 256Mi
+        ports:
+        - containerPort: 80
+          protocol: TCP
+        volumeMounts:
+          - name: index-html
+            mountPath: /usr/share/nginx/html
+      volumes:
+        - name: index-html
+          configMap:
+            name: config-map-app-one
+            items:
+              - key: index.html
+                path: index.html
+

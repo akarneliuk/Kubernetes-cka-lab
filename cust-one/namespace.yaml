@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: cust-one
+  labels:
+    stage: dev
+    application: k8s-klc
